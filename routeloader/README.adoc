@@ -1,0 +1,39 @@
+== Camel Example Route Loader with multiple DSLs
+
+This example shows how Camel is capable of loading routes during startup using the new route loader system.
+The route loader has support for loading routes in XML, Java and YAML (other languages to be added).
+
+This is the feature that was first developed as part of Camel K which has evolved to be a core
+part of Camel.
+
+The example has the following routes in the `src/main/resources/myroutes` directory:
+
+- `MyRouteBuilder.java` which is a java file, but the file is not part of the regular source code and is therefore not compiled with the regular Java compiler. The route is loaded by Camel's route loader and dynamically compiled via `camel-java-joor-dsl` during startup of Camel.
+- `my-yaml-route.yaml` which is loaded by the new `camel-yaml-dsl` engine. 
+- `cheese-route.xml` which is loaded by the `camel-xml-io-dsl` engine.
+
+=== Build
+
+You will need to compile this example first:
+
+----
+$ mvn compile
+----
+
+=== How to run
+
+You can run this example using
+
+----
+$ mvn camel:run
+----
+
+=== Help and contributions
+
+If you hit any problem using Camel or have some feedback, then please
+https://camel.apache.org/community/support/[let us know].
+
+We also love contributors, so
+https://camel.apache.org/community/contributing/[get involved] :-)
+
+The Camel riders!

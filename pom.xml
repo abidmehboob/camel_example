@@ -1,688 +1,525 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!--
-  ~ Copyright (C) Scott Cranton, Jakub Korab, and Christian Posta
-  ~ https://github.com/CamelCookbook
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~    http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
 
-  <groupId>org.camelcookbook.examples</groupId>
-  <artifactId>camel-cookbook-examples</artifactId>
-  <packaging>pom</packaging>
-  <version>2.0-SNAPSHOT</version>
-  <inceptionYear>2013</inceptionYear>
+         http://www.apache.org/licenses/LICENSE-2.0
 
-  <name>${application-name}</name>
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
 
-  <scm>
-    <connection>scm:git:https://github.com/CamelCookbook/camel-cookbook-examples.git</connection>
-    <developerConnection>scm:git:https://github.com/CamelCookbook/camel-cookbook-examples.git</developerConnection>
-    <url>https://github.com/CamelCookbook/camel-cookbook-examples</url>
-  </scm>
+--><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-  <developers>
-    <developer>
-      <id>scranton</id>
-      <name>Scott Cranton</name>
-    </developer>
-    <developer>
-      <id>jkorab</id>
-      <name>Jakub Korab</name>
-    </developer>
-    <developer>
-      <id>ceposta</id>
-      <name>Christian Posta</name>
-    </developer>
-  </developers>
+    <modelVersion>4.0.0</modelVersion>
 
-  <properties>
-    <application-name>Camel Cookbook Examples</application-name>
-
-    <camel-version>2.20.0-SNAPSHOT</camel-version>
-
-    <activemq-version>5.14.5</activemq-version>
-    <aries-blueprint-api-version>1.0.1</aries-blueprint-api-version>
-    <aries-blueprint-cm-version>1.0.6</aries-blueprint-cm-version>
-    <aries-blueprint-core-version>1.4.4</aries-blueprint-core-version>
-    <aries-blueprint-proxy-version>1.0.1</aries-blueprint-proxy-version>
-    <aries-blueprint-proxy-impl-version>1.0.4</aries-blueprint-proxy-impl-version>
-    <aries-util-version>1.1.3</aries-util-version>
-    <atomikos-version>4.0.4</atomikos-version>
-    <commons-codec-version>1.10</commons-codec-version>
-    <commons-lang-version>2.6</commons-lang-version>
-    <commons-lang3-version>3.5</commons-lang3-version>
-    <commons-logging-version>1.2</commons-logging-version>
-    <cxf-version>3.1.11</cxf-version>
-    <h2-version>1.4.196</h2-version>
-    <jackson2-version>2.8.9</jackson2-version>
-    <jaxb-version>2.2.11</jaxb-version>
-    <jetty9-version>9.3.14.v20161028</jetty9-version>
-    <junit-version>4.12</junit-version>
-    <karaf-version>4.1.1</karaf-version>
-    <log4j2-version>2.8.2</log4j2-version>
-    <saxon-version>9.7.0-18</saxon-version>
-    <slf4j-version>1.7.22</slf4j-version>
-    <spring-boot-version>1.5.4.RELEASE</spring-boot-version>
-    <spring-security-version>4.1.4.RELEASE</spring-security-version>
-    <spring4-version>4.3.10.RELEASE</spring4-version>
-    <swagger-java-guava-version>20.0</swagger-java-guava-version>
-    <swagger-java-version>1.5.16</swagger-java-version>
-    <xalan-version>2.7.2</xalan-version>
-    <xbean-spring-version>4.5</xbean-spring-version>
-    <xml-apis-version>1.4.01</xml-apis-version>
-    <xom-version>1.2.5</xom-version>
-
-    <maven-compiler-plugin-version>3.6.1</maven-compiler-plugin-version>
-    <maven-bundle-plugin-version>3.3.0</maven-bundle-plugin-version>
-    <maven-enforcer-plugin-version>1.4.1</maven-enforcer-plugin-version>
-    <maven-surefire-plugin-version>2.19.1</maven-surefire-plugin-version>
-
-    <osgi-import-package>*</osgi-import-package>
-
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-
-  <modules>
-    <module>01-structuring-routes</module>
-    <module>02-routing</module>
-    <module>03-extending</module>
-    <module>04-rest</module>
-    <module>04-rest-hello</module>
-    <module>05-transforming</module>
-    <module>06-splitting-aggregating</module>
-    <module>07-parallel-processing</module>
-    <module>08-error-handling</module>
-    <module>09-transactions</module>
-    <module>10-runtimes</module>
-    <module>11-testing</module>
-    <module>12-monitoring</module>
-    <module>13-security</module>
-    <module>14-web-services</module>
-  </modules>
-
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
+    <parent>
         <groupId>org.apache.camel</groupId>
-        <artifactId>camel-core</artifactId>
-        <version>${camel-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-spring</artifactId>
-        <version>${camel-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-blueprint</artifactId>
-        <version>${camel-version}</version>
-      </dependency>
+        <artifactId>camel-dependencies</artifactId>
+        <version>4.7.0-SNAPSHOT</version>
+    </parent>
 
-      <dependency>
-        <groupId>org.apache.aries.blueprint</groupId>
-        <artifactId>org.apache.aries.blueprint.api</artifactId>
-        <version>${aries-blueprint-api-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.aries.blueprint</groupId>
-        <artifactId>org.apache.aries.blueprint.cm</artifactId>
-        <version>${aries-blueprint-cm-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.aries.blueprint</groupId>
-        <artifactId>org.apache.aries.blueprint.core</artifactId>
-        <version>${aries-blueprint-core-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.aries.proxy</groupId>
-        <artifactId>org.apache.aries.proxy.api</artifactId>
-        <version>${aries-blueprint-proxy-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.aries.proxy</groupId>
-        <artifactId>org.apache.aries.proxy.impl</artifactId>
-        <version>${aries-blueprint-proxy-impl-version}</version>
-      </dependency>
+    <groupId>org.apache.camel.example</groupId>
+    <artifactId>camel-examples</artifactId>
+    <version>4.7.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-saxon</artifactId>
-        <version>${camel-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-cxf</artifactId>
-        <version>${camel-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-bindy</artifactId>
-        <version>${camel-version}</version>
-      </dependency>
+    <name>Camel Examples</name>
+    <description>Examples for Camel</description>
+    <url>https://camel.apache.org</url>
 
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-jaxb</artifactId>
-        <version>${camel-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-xstream</artifactId>
-        <version>${camel-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-jackson</artifactId>
-        <version>${camel-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-xmljson</artifactId>
-        <version>${camel-version}</version>
-      </dependency>
+    <developers>
+        <developer>
+            <name>The Apache Camel Team</name>
+            <email>dev@camel.apache.org</email>
+            <url>https://camel.apache.org</url>
+            <organization>Apache Software Foundation</organization>
+            <organizationUrl>http://apache.org/</organizationUrl>
+        </developer>
+    </developers>
 
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-swagger-java</artifactId>
-        <version>${camel-version}</version>
-      </dependency>
+    <mailingLists>
+        <mailingList>
+            <name>Development List</name>
+            <subscribe>dev-subscribe@camel.apache.org</subscribe>
+            <unsubscribe>dev-unsubscribe@camel.apache.org</unsubscribe>
+            <post>dev@camel.apache.org</post>
+        </mailingList>
+        <mailingList>
+            <name>User List</name>
+            <subscribe>users-subscribe@camel.apache.org</subscribe>
+            <unsubscribe>users-unsubscribe@camel.apache.org</unsubscribe>
+            <post>users@camel.apache.org</post>
+        </mailingList>
+        <mailingList>
+            <name>Commits List</name>
+            <subscribe>commits-subscribe@camel.apache.org</subscribe>
+            <unsubscribe>commits-unsubscribe@camel.apache.org</unsubscribe>
+            <post>commits@camel.apache.org</post>
+        </mailingList>
+    </mailingLists>
 
-      <!-- TODO: need these for camel-swagger-java -->
-      <dependency>
-        <groupId>com.fasterxml.jackson</groupId>
-        <artifactId>jackson-bom</artifactId>
-        <version>${jackson2-version}</version>
-        <scope>import</scope>
-        <type>pom</type>
-      </dependency>
-      <dependency>
-        <groupId>com.google.guava</groupId>
-        <artifactId>guava</artifactId>
-        <version>${swagger-java-guava-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>io.swagger</groupId>
-        <artifactId>swagger-core</artifactId>
-        <version>${swagger-java-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.commons</groupId>
-        <artifactId>commons-lang3</artifactId>
-        <version>${commons-lang3-version}</version>
-      </dependency>
+    <issueManagement>
+        <system>jira</system>
+        <url>https://issues.apache.org/jira/browse/CAMEL</url>
+    </issueManagement>
 
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-xmlsecurity</artifactId>
-        <version>${camel-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-script</artifactId>
-        <version>${camel-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-jmx</artifactId>
-        <version>${camel-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-crypto</artifactId>
-        <version>${camel-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-jasypt</artifactId>
-        <version>${camel-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-undertow</artifactId>
-        <version>${camel-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-netty4-http</artifactId>
-        <version>${camel-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-servlet</artifactId>
-        <version>${camel-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-web</artifactId>
-        <version>${spring4-version}</version>
-      </dependency>
+    <distributionManagement>
+        <site>
+            <id>apache.website</id>
+            <url>${site-repo-url}</url>
+        </site>
+    </distributionManagement>
 
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-spring-security</artifactId>
-        <version>${camel-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework.security</groupId>
-        <artifactId>spring-security-core</artifactId>
-        <version>${spring-security-version}</version>
-        <exclusions>
-          <exclusion>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-expression</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-          </exclusion>
-        </exclusions>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework.security</groupId>
-        <artifactId>spring-security-config</artifactId>
-        <version>${spring-security-version}</version>
-        <exclusions>
-          <exclusion>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-          </exclusion>
-          <exclusion>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-          </exclusion>
-        </exclusions>
-      </dependency>
+    <modules>
+        <module>aggregate</module>
+        <module>aggregate-dist</module>
+        <module>as2</module>
+        <module>aws</module>
+        <module>azure</module>
+        <module>basic</module>
+        <module>billboard-aggregate</module>
+        <module>bigxml-split</module>
+        <module>cafe</module>
+        <module>cafe-endpointdsl</module>
+        <module>cassandra-kubernetes</module>
+        <module>console</module>
+        <module>couchbase-log</module>
+        <module>csimple</module>
+        <module>csimple-joor</module>
+        <module>debezium</module>
+        <module>debezium-eventhubs-blob</module>
+        <module>flight-recorder</module>
+        <module>ftp</module>
+        <module>google</module>
+        <module>hazelcast-kubernetes</module>
+        <module>java8</module>
+        <module>jdbc</module>
+        <module>jmx</module>
+        <module>jooq</module>
+        <module>kafka</module>
+        <module>kamelet</module>
+        <module>kamelet-chucknorris</module>
+        <module>kamelet-main</module>
+        <module>kamelet-sql</module>
+        <module>kotlin</module>
+        <module>loadbalancing</module>
+        <module>main</module>
+        <module>main-endpointdsl</module>
+        <module>main-health</module>
+        <module>main-joor</module>
+        <module>main-lambda</module>
+        <module>main-micrometer</module>
+        <module>main-tiny</module>
+        <module>main-xml</module>
+        <module>main-yaml</module>
+        <module>mapstruct</module>
+        <module>minio</module>
+        <module>mongodb</module>
+        <module>netty-custom-correlation</module>
+        <module>oaipmh</module>
+        <module>reactive-executor-vertx</module>
+        <module>resume-api</module>
+        <module>routeloader</module>
+        <module>routetemplate</module>
+        <module>routetemplate-xml</module>
+        <module>routes-configuration</module>
+        <module>salesforce-consumer</module>
+        <module>splunk</module>
+        <module>spring</module>
+        <module>spring-pulsar</module>
+        <module>spring-security</module>
+        <module>spring-xquery</module>
+        <module>telegram</module>
+        <module>transformer-demo</module>
+        <module>vault</module>
+        <module>whatsapp</module>
+    </modules>
 
-      <dependency>
-        <groupId>commons-codec</groupId>
-        <artifactId>commons-codec</artifactId>
-        <version>${commons-codec-version}</version>
-      </dependency>
+    <properties>
+        <!-- unify the encoding for all the modules -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-      <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-rt-transports-http-jetty</artifactId>
-        <version>${cxf-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-rt-transports-http</artifactId>
-        <version>${cxf-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-core</artifactId>
-        <version>${cxf-version}</version>
-      </dependency>
+        <site-repo-url>scpexe://people.apache.org/www/camel.apache.org/maven/</site-repo-url>
+        <jdk.version>17</jdk.version>
+        <compiler.fork>false</compiler.fork>
 
-      <dependency>
-        <groupId>org.apache.activemq</groupId>
-        <artifactId>activemq-camel</artifactId>
-        <version>${activemq-version}</version>
-      </dependency>
+        <camel.version>${project.version}</camel.version>
 
-      <!--
-        Ensure we're using matching camel version as activemq-camel
-        embeds camel-jms, and it may be an older version.
-      -->
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-jms</artifactId>
-        <version>${camel-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-jms</artifactId>
-        <version>${spring4-version}</version>
-      </dependency>
+        <arquillian-version>1.7.0.Alpha10</arquillian-version>
+        <arquillian-tomcat-version>1.2.0.Final</arquillian-tomcat-version>
+        <arquillian-jetty-version>1.0.0.CR4</arquillian-jetty-version>
+        <asciidoctorj-version>2.1.0</asciidoctorj-version>
+        <cdi-api-1.2-version>1.2</cdi-api-1.2-version>
+        <groovy-version>3.0.2</groovy-version>
+        <pax-exam-version>4.13.2</pax-exam-version>
+        <pax-url-aether>2.6.2</pax-url-aether>
+        <jaxb-version>2.3.0</jaxb-version>
+        <!-- These are not inherited from Camel via camel-dependencies -->
+        <maven-compiler-plugin-version>3.11.0</maven-compiler-plugin-version>
+        <maven-surefire-plugin-version>3.1.2</maven-surefire-plugin-version>
+        <maven-javadoc-plugin-version>3.5.0</maven-javadoc-plugin-version>
+        <maven-release-plugin-version>3.0.1</maven-release-plugin-version>
+        <flatten-maven-plugin-version>1.5.0</flatten-maven-plugin-version>
+        <metrics-cdi-version>1.3.3</metrics-cdi-version>
+        <mycila-license-version>3.0</mycila-license-version>
+        <pax-cdi-version>1.0.0</pax-cdi-version>
+        <surefire.version>${maven-surefire-plugin-version}</surefire.version>
+        <tomcat-version>10.1.13</tomcat-version>
+        <jkube-version>1.14.0</jkube-version>
+        <wsdl4j-version>1.6.3</wsdl4j-version>
+        <fabric8-maven-plugin-version>4.4.1</fabric8-maven-plugin-version>
+    </properties>
 
-      <dependency>
-        <groupId>commons-lang</groupId>
-        <artifactId>commons-lang</artifactId>
-        <version>${commons-lang-version}</version>
-      </dependency>
+    <repositories>
+        <repository>
+            <id>apache.snapshots</id>
+            <url>https://repository.apache.org/snapshots/</url>
+            <name>Apache Snapshot Repo</name>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>apache.snapshots</id>
+            <url>https://repository.apache.org/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
 
-      <!-- JDBC -->
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-sql</artifactId>
-        <version>${camel-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-jdbc</artifactId>
-        <version>${camel-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-jdbc</artifactId>
-        <version>${spring4-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.h2database</groupId>
-        <artifactId>h2</artifactId>
-        <version>${h2-version}</version>
-      </dependency>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
 
-      <dependency>
-        <groupId>com.atomikos</groupId>
-        <artifactId>transactions</artifactId>
-        <version>${atomikos-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.atomikos</groupId>
-        <artifactId>transactions-api</artifactId>
-        <version>${atomikos-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.atomikos</groupId>
-        <artifactId>transactions-jdbc</artifactId>
-        <version>${atomikos-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.atomikos</groupId>
-        <artifactId>transactions-jms</artifactId>
-        <version>${atomikos-version}</version>
-      </dependency>
+            <!-- update readme file -->
+            <plugin>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-package-maven-plugin</artifactId>
+                <version>${camel.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-example</goal>
+                        </goals>
+                        <phase>process-resources</phase>
+                    </execution>
+                </executions>
+            </plugin>
 
-      <!-- testing dependencies -->
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-test</artifactId>
-        <version>${camel-version}</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-test-spring</artifactId>
-        <version>${camel-version}</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-test-blueprint</artifactId>
-        <version>${camel-version}</version>
-        <scope>test</scope>
-      </dependency>
-      <!--
-        needs to be explicitly listed due to conflict in transitive dependencies
-        in spring versions between camel-spring and camel-test-spring in 2.10.4
-      -->
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-test</artifactId>
-        <version>${spring4-version}</version>
-        <scope>test</scope>
-      </dependency>
+            <!-- to validate Camel endpoints: mvn camel-report:validate -->
+            <plugin>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-report-maven-plugin</artifactId>
+                <version>${camel.version}</version>
+                <configuration>
+                    <failOnError>false</failOnError>
+                    <includeTest>true</includeTest>
+                    <includeXml>true</includeXml>
+                    <ignoreLenientProperties>false</ignoreLenientProperties>
+                </configuration>
+            </plugin>
 
-      <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>${junit-version}</version>
-        <scope>test</scope>
-      </dependency>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <forkCount>1</forkCount>
+                    <reuseForks>false</reuseForks>
+                    <systemPropertyVariables>
+                        <skipStartingCamelContext>${skip.starting.camel.context}</skipStartingCamelContext>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
 
-      <!-- logging dependencies -->
-      <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-api</artifactId>
-        <version>${slf4j-version}</version>
-      </dependency>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin-version}</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <maxmem>512M</maxmem>
+                    <fork>${compiler.fork}</fork>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <attach>true</attach>
+                    <source>${jdk.version}</source>
+                    <quiet>true</quiet>
+                    <bottom>Apache Camel</bottom>
+                    <detectOfflineLinks>false</detectOfflineLinks>
+                    <javadocVersion>1.8.0</javadocVersion>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${maven-javadoc-plugin-version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-eclipse-plugin</artifactId>
+                    <version>2.10</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.apache.camel</groupId>
+                            <artifactId>camel-buildtools</artifactId>
+                            <version>${camel.version}</version>
+                        </dependency>
+                    </dependencies>
+                    <configuration>
+                        <downloadSources>true</downloadSources>
+                        <downloadJavadocs>false</downloadJavadocs>
+                    </configuration>
+                </plugin>
 
-      <dependency>
-        <groupId>org.apache.logging.log4j</groupId>
-        <artifactId>log4j-bom</artifactId>
-        <version>${log4j2-version}</version>
-        <scope>import</scope>
-        <type>pom</type>
-      </dependency>
+                <plugin>
+                    <groupId>org.apache.rat</groupId>
+                    <artifactId>apache-rat-plugin</artifactId>
+                    <configuration>
+                        <excludeSubProjects>false</excludeSubProjects>
+                        <excludes>
+                            <exclude>**/generated.txt</exclude>
+                            <exclude>**/*.json</exclude>
+                            <exclude>**/README</exclude>
+                            <exclude>**/README.txt</exclude>
+                            <exclude>**/README.md</exclude>
+                            <exclude>**/ReadMe.md</exclude>
+                            <exclude>**/resources/**/*.xsd</exclude>
+                            <exclude>**/webapp/js/**/*</exclude>
+                            <exclude>**/test/resources/**/*</exclude>
+                            <exclude>**/test/data*/**/*</exclude>
+                            <exclude>.gitignore</exclude>
+                            <exclude>.git/**/*</exclude>
+                            <exclude>**/*.adoc</exclude>
+                            <exclude>**/*.adoc.template</exclude>
+                            <exclude>**/*.md</exclude>
+                            <exclude>**/*.sh</exclude>
+                            <exclude>**/*.bat</exclude>
+                            <exclude>**/java9-maven-settings</exclude>
+                            <exclude>**/*.pfx</exclude>
+                            <!-- tooling json-simple parser -->
+                            <exclude>**/src/main/java/org/json/simple/**</exclude>
+                            <!-- tooling/camel-manual/src/styles/print.css use a different license -->
+                            <exclude>**/src/styles/print.css</exclude>
+                            <!-- tooling for component docs -->
+                            <exclude>**/component-header.mvel</exclude>
+                            <exclude>**/component-options.mvel</exclude>
+                            <exclude>**/endpoint-options.mvel</exclude>
+                            <exclude>**/dataformat-options.mvel</exclude>
+                            <exclude>**/eip-options.mvel</exclude>
+                            <exclude>**/language-options.mvel</exclude>
+                            <exclude>**/website-components-list.mvel</exclude>
+                            <exclude>**/website-languages-list.mvel</exclude>
+                            <exclude>**/website-others-list.mvel</exclude>
+                            <exclude>**/website-dataformats-list.mvel</exclude>
+                            <exclude>**/readme-examples.mvel</exclude>
+                            <exclude>**/spring-boot-auto-configure-options.mvel</exclude>
+                            <exclude>**/camel-NOTICE.txt</exclude>
+                            <exclude>**/spring-boot-starter-NOTICE.txt</exclude>
+                            <!-- cxf does not handle comments here -->
+                            <exclude>**/src/main/resources/META-INF/cxf/cxf.extension</exclude>
+                            <exclude>**/src/main/resources/META-INF/cxf/bus-extensions.txt</exclude>
+                            <!-- ignore the api signatures files -->
+                            <exclude>**/src/signatures/*.txt</exclude>
+                            <!-- camel-salesforce BSD license from salesforce developers -->
+                            <exclude>**/CometDReplayExtension.java</exclude>
+                            <exclude>**/LICENSE-SALESFORCE.txt</exclude>
+                            <!-- camel-as2 -->
+                            <exclude>**/mdnDescription.vm</exclude>
+                            <!-- camel-jbpm -->
+                            <exclude>**/src/main/resources/*.wid</exclude>
+                            <!-- camel website and user-manual -->
+                            <exclude>**/node/**</exclude>
+                            <exclude>**/node_modules/**</exclude>
+                            <exclude>**/user-manual/**</exclude>
+                            <exclude>**/yarn.lock</exclude>
+                            <!-- examples -->
+                            <exclude>**/fabric8/*.yaml</exclude>
+                            <exclude>**/src/main/data/*.patient</exclude>
+                            <exclude>**/src/main/data/*.csv</exclude>
+                            <exclude>**/src/main/resources/avro/*.avsc</exclude>
+                            <!-- generated files -->
+                            <exclude>**/target/**/*</exclude>
+                            <exclude>**/eclipse-classes/**/*</exclude>
+                            <exclude>**/.*</exclude>
+                            <exclude>**/.settings/**/*</exclude>
+                            <exclude>**/*.iml</exclude>
+                            <exclude>**/.idea/**/*</exclude>
+                            <exclude>**/avro/**/*.avpr</exclude>
+                            <exclude>**/test_rsa*</exclude>
+                            <exclude>**/data*/**/*.xml</exclude>
+                            <exlucde>**/*.log</exlucde>
+                            <exclude>**/id_file</exclude>
+                            <exclude>**/dependency-reduced-pom.xml</exclude>
+                            <exclude>**/Dropbox_API_Terms_and_Conditions.txt</exclude>
+                            <exclude>**/MerchandiseRestResource.apxc</exclude>
+                            <exclude>**/file-sig-api.txt</exclude>
+                            <exclude>**/Tasks__c.java</exclude>
+                            <exclude>**/*.proto</exclude>
+                            <exclude>
+                                **/src/main/resources/META-INF/services/org.kie.server.services.api.KieServerExtension
+                            </exclude>
+                            <!-- Maven Wrapper -->
+                            <exclude>.mvn/**/*</exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
 
-      <dependency>
-        <groupId>xom</groupId>
-        <artifactId>xom</artifactId>
-        <version>${xom-version}</version>
-      </dependency>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>${maven-release-plugin-version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.apache.maven.scm</groupId>
+                            <artifactId>maven-scm-provider-gitexe</artifactId>
+                            <version>1.9</version>
+                        </dependency>
+                    </dependencies>
+                    <configuration>
+                        <localCheckout>true</localCheckout>
+                        <pushChanges>true</pushChanges>
+                        <tagNameFormat>@{project.artifactId}-@{project.version}</tagNameFormat>
+                        <useReleaseProfile>false</useReleaseProfile>
+                        <preparationGoals>clean install</preparationGoals>
+                        <goals>deploy</goals>
+                        <!-- The profile we want to use when doing the release -->
+                        <arguments>-Prelease,apache-release,enable-schemagen,apt,sourcecheck,hibernate</arguments>
+                        <autoVersionSubmodules>true</autoVersionSubmodules>
+                    </configuration>
+                </plugin>
 
-      <!-- transitive dependencies -->
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-core</artifactId>
-        <version>${spring4-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-beans</artifactId>
-        <version>${spring4-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-aop</artifactId>
-        <version>${spring4-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-tx</artifactId>
-        <version>${spring4-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-context</artifactId>
-        <version>${spring4-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-context-support</artifactId>
-        <version>${spring4-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.geronimo.specs</groupId>
-        <artifactId>geronimo-jta_1.1_spec</artifactId>
-        <version>1.1.1</version>
-      </dependency>
-      <dependency>
-        <groupId>commons-logging</groupId>
-        <artifactId>commons-logging</artifactId>
-        <version>${commons-logging-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>xml-apis</groupId>
-        <artifactId>xml-apis</artifactId>
-        <version>${xml-apis-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.aries</groupId>
-        <artifactId>org.apache.aries.util</artifactId>
-        <version>${aries-util-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>xalan</groupId>
-        <artifactId>xalan</artifactId>
-        <version>${xalan-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.sun.xml.bind</groupId>
-        <artifactId>jaxb-core</artifactId>
-        <version>${jaxb-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.sun.xml.bind</groupId>
-        <artifactId>jaxb-impl</artifactId>
-        <version>${jaxb-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>net.sf.saxon</groupId>
-        <artifactId>Saxon-HE</artifactId>
-        <version>${saxon-version}</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-remote-resources-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>process-resource-bundles</id>
+                            <phase>disabled</phase>
+                        </execution>
+                    </executions>
+                </plugin>
 
-  <build>
-    <defaultGoal>install</defaultGoal>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>flatten-maven-plugin</artifactId>
+                    <version>${flatten-maven-plugin-version}</version>
+                    <executions>
+                        <execution>
+                            <id>default-cli</id>
+                            <phase>process-resources</phase>
+                            <goals>
+                                <goal>flatten</goal>
+                            </goals>
+                            <configuration>
+                                <updatePomFile>true</updatePomFile>
+                                <pomElements>
+                                    <build>keep</build>
+                                    <dependencyManagement>keep</dependencyManagement>
+                                    <description>keep</description>
+                                    <name>keep</name>
+                                    <parent>expand</parent>
+                                    <pluginManagement>keep</pluginManagement>
+                                    <profiles>remove</profiles>
+                                    <properties>keep</properties>
+                                </pomElements>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
 
-    <plugins>
-      <plugin>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-maven-plugin</artifactId>
-        <version>${camel-version}</version>
-        <executions>
-          <execution>
-            <phase>process-test-classes</phase>
-            <goals>
-              <goal>validate</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+                <plugin>
+                    <artifactId>maven-invoker-plugin</artifactId>
+                    <configuration>
+                        <skipInstallation>${invoker.skip}</skipInstallation>
+                        <skipInvocation>${invoker.skip}</skipInvocation>
+                        <mavenOpts>-Xmx64m -XshowSettings</mavenOpts>
+                        <showVersion>true</showVersion>
+                    </configuration>
+                </plugin>
 
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>${maven-compiler-plugin-version}</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-          <showDeprecation>true</showDeprecation>
-          <compilerArgument>-Xlint</compilerArgument>
-        </configuration>
-      </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>${exec-maven-plugin-version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
-      <!-- used to generate the MANIFEST-FILE of a bundle -->
-      <plugin>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>maven-bundle-plugin</artifactId>
-        <version>${maven-bundle-plugin-version}</version>
-        <extensions>true</extensions>
-        <configuration>
-          <instructions>
-            <Import-Package>${osgi-import-package}</Import-Package>
-          </instructions>
-        </configuration>
-      </plugin>
+    <profiles>
+        <profile>
+            <id>container-test</id>
+            <properties>
+                <skip.starting.camel.context>true</skip.starting.camel.context>
+            </properties>
+        </profile>
+        <!--
+          This profile allows you to add a repository to the repo list so that
+          you can test the examples out against a staged version of the camel distribution
+        -->
+        <profile>
+            <id>add-remote-repo</id>
+            <activation>
+                <property>
+                    <name>remoteRepo</name>
+                </property>
+            </activation>
 
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-scm-plugin</artifactId>
-        <version>1.8.1</version>
-      </plugin>
+            <repositories>
+                <repository>
+                    <id>dynamic.repo</id>
+                    <name>Repository Dynamically Added Via the Command Line</name>
+                    <url>$remoteRepo</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>dynamic.repo</id>
+                    <name>Repository Dynamically Added Via the Command Line</name>
+                    <url>$remoteRepo</url>
+                </pluginRepository>
+            </pluginRepositories>
 
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>versions-maven-plugin</artifactId>
-        <version>2.1</version>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-enforcer-plugin</artifactId>
-        <version>${maven-enforcer-plugin-version}</version>
-        <executions>
-          <execution>
-            <id>enforce</id>
-            <configuration>
-              <rules>
-                <dependencyConvergence/>
-                <requireMavenVersion>
-                  <version>[3.3.9,)</version>
-                </requireMavenVersion>
-                <requireJavaVersion>
-                  <version>[1.8.0,)</version>
-                </requireJavaVersion>
-              </rules>
-            </configuration>
-            <goals>
-              <goal>enforce</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>${maven-surefire-plugin-version}</version>
-        <configuration>
-          <!-- set the locale for all tests rather than rely on the system locale -->
-          <argLine>-Duser.country=US -Duser.language=en</argLine>
-        </configuration>
-      </plugin>
-
-    </plugins>
-
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.cxf</groupId>
-          <artifactId>cxf-codegen-plugin</artifactId>
-          <version>${cxf-version}</version>
-          <extensions>true</extensions>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-idea-plugin</artifactId>
-          <version>2.2.1</version>
-          <configuration>
-            <downloadSources>true</downloadSources>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-  </build>
-
-  <repositories>
-    <repository>
-      <id>apache.snapshots</id>
-      <url>http://repository.apache.org/snapshots/</url>
-      <name>Apache Snapshot Repo</name>
-      <snapshots>
-        <enabled>true</enabled>
-        <updatePolicy>daily</updatePolicy>
-        <checksumPolicy>fail</checksumPolicy>
-      </snapshots>
-      <releases>
-        <enabled>false</enabled>
-        <updatePolicy>never</updatePolicy>
-        <checksumPolicy>warn</checksumPolicy>
-      </releases>
-    </repository>
-  </repositories>
-
-  <pluginRepositories>
-    <pluginRepository>
-      <id>apache.snapshots</id>
-      <url>http://repository.apache.org/snapshots/</url>
-      <snapshots>
-        <enabled>true</enabled>
-        <updatePolicy>daily</updatePolicy>
-        <checksumPolicy>fail</checksumPolicy>
-      </snapshots>
-      <releases>
-        <enabled>false</enabled>
-        <updatePolicy>never</updatePolicy>
-        <checksumPolicy>warn</checksumPolicy>
-      </releases>
-    </pluginRepository>
-  </pluginRepositories>
+        </profile>
+    </profiles>
 
 </project>
