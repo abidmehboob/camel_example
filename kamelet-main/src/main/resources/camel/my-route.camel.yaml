@@ -1,8 +1,0 @@
-- route:
-    id: "earthquake"
-    from:
-      uri: "kamelet:earthquake-source"
-      steps:
-        - unmarshal:
-            json: {}
-        - log: "Earthquake with magnitude ${body[properties][mag]} at ${body[properties][place]}"
