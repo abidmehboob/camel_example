@@ -1,24 +1,17 @@
 package org.example;
 
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.main.Main;
+import org.springframework.stereotype.Component;
 
+@Component
 public class FileRoute extends RouteBuilder {
 
     @Override
-    public void configure() {
-        from("file:input")
-                .process(exchange -> {
-                    String originalFileContent = exchange.getIn().getBody(String.class);
-                    String upperCaseContent = originalFileContent.toUpperCase();
-                    exchange.getIn().setBody(upperCaseContent);
-                })
-                .to("file:output");
-    }
+    public void configure() throws Exception {
 
-    public static void main(String[] args) throws Exception {
-        Main main = new Main();
-        main.configure().addRoutesBuilder(new FileRoute());
-        main.run(args);
+        from("direct:start")
+                .routeId("greetings-route")
+                .setBody(constant("Hello Baeldung Readers!"))
+                .to("file:output");
     }
 }
