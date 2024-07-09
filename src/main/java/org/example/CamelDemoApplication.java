@@ -1,11 +1,15 @@
 package org.example;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-@SpringBootApplication
+
 public class CamelDemoApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(CamelDemoApplication.class, args);
+    public static void main(final String[] args) throws Exception {
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("camel-context.xml");
+        // Keep main thread alive for some time to let application finish processing the input files.
+        Thread.sleep(5000);
+        applicationContext.close();
     }
 }
